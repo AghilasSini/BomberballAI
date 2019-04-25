@@ -1,0 +1,82 @@
+#General
+"End Turn" : "Fin Tour"
+"Actions" : "Actions"
+"Move" : "Déplacement"
+"Bomb" : "Bombe"
+
+#EndLevelUI
+"level unlocked"		:	"Niveau %d débloqué !"
+"level succeeded"		:	"Félicitations! Vous avez réussi niveau %d !"
+"Replay last level"     :   "Rejouer"
+
+#SoloUI
+"mode movement button"	:	"Déplacement [%s]"
+"mode bombe button"		:	"Bombe [%s]"
+"endTurn button"		:	"Fin de tour [%s]"
+
+#SettingsMenuUI
+"Action"		:	"Action"
+"inputs"		:	"contrôles"
+"Language"		:	"Langage"
+"general"		:	"général"
+"Primary"		:	"Primary"
+"Secondary"		:	"Secondary"
+
+#Story Menus
+"Level Selection"	:	"Selection des niveaux"
+"Wasted !"		    :	"Wasted !"
+"draw ..."			:	"égalité ..."
+"Lost!"				:	"Perdu!"
+"VICTORY!"			:	"VICTOIRE!"
+"All levels unlocked !"	:	"Vous avez débloqué tous les niveaux !"
+"Play next level"		:	"Jouer au niveau suivant"
+"Retry this level"			:	"Rejouer le niveau"
+"Retry last level"		:	"Rejouer le dernier niveau"
+"Back to level selection"	:	"Revenir à la sélection des niveaux"
+"Play Selected Level"	:	"Jouer au niveau selectionné"
+"story mode congratulations"		:	"Félicitations ! Vous avez terminé le mode histoire !"
+
+#MainMenuUI
+"Multiplayer"	:	"Multijoueur"
+"Solo"		    :	"Solitaire"
+"Map Editor"	:	"Editeur de Carte"
+"Settings"		:	"Paramètres"
+"Quit"		    :	"Quitter le jeu"
+
+"Back to main menu"		:	"Retour au menu principal"
+"Multiplayer menu"		:	"Menu multijoueur"
+"Play"		            :	"Jouer"
+"Back"	        		:	"Retour"
+"Infinite Mode"		    :	"Mode infini"
+"Story Mode"		    :	"Mode histoire"
+"Replay"		        :	"Rejouer"
+
+#InfiniteMenuUI
+"Highscore"			:	"Highscore"
+"No bonus"          :   "Sans bonus"
+"Limited turns"     :   "Limite nombre de tours"
+"No crates"         :   "Sans caisses"
+"Random Maze"		:	"Carte Aléatoire"
+"Turns left" : "Tours restants"
+
+#WelcomingMenu UI
+"Press [%s] to play"    :     "Appuyez sur [%s] pour jouer"
+
+#MapEditor
+"Save"   :    "Sauvegarder"
+"Width"  :    "Largeur"
+"Height" :    "Hauteur"
+"Edit"   :    "Editer"
+"New"    :    "Nouveau"
+
+#Story
+"story1"    :   "Bianca la plus belle princesse du royaume et Maximilien le plus preux\ndes chevaliers vivaient une fascinante idylle, tellement\nfascinante qu'elle venait à rendre envieux le seigneur Plétor."
+"story2"    :   "Pris d'une rage et d'une jalousie folles, il enleva Maximilien et l'enferma\ndans le cachot de sa plus haute tour.\nPlétor : "Ici, tu resteras à jamais et la princesse Bianca j'épouserai""
+"story3"    :   "C'est ainsi que seul dans son cachot, le chevalier fit la rencontre du\nmagicien Bernard sous ce qui semblait être une pile de vieilles guenilles."
+"story4"    :   "Bernard : "Je peux vous aider à retrouver votre douce. Voici pléthore ..."\nMaximilien : "Où ça ?"\nBernard : "de bombes vous permettant de vous échapper de ce donjon.\nFaites-en bon usage"
+"Skip"      :   "Passer"
+"Next chapter"  :   "Chapitre suivant"
+"The hero"      :   "Le héros"
+"The princess"  :   "La princesse"
+"The magician"  :   "Le magicien"
+"The bad guy"      :   "Le méchant"

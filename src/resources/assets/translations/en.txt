@@ -1,0 +1,82 @@
+#General
+"End Turn" : "End Turn"
+"Actions" : "Actions"
+"Move" : "Move"
+"Bomb" : "Bomb"
+
+#EndLevelUI
+"level unlocked"		:	"Level %d unlocked !"
+"level succeeded"		:	"Congratulations ! You've succeeded level %d !"
+"Replay last level"     :   "Replay"
+
+#SoloUI
+"mode movement button"	:	"Movement [%s]"
+"mode bombe button"		:	"Bomb [%s]"
+"endTurn button"		:	"End Turn [%s]"
+
+#SettingsMenuUI
+"Action"		:	"Action"
+"inputs"		:	"inputs"
+"Language"		:	"Language"
+"general"		:	"general"
+"Primary"		:	"Primary"
+"Secondary"		:	"Secondary"
+
+#Story Menus
+"Level Selection"	:	"Level Selection"
+"Wasted !"		    :	"Wasted !"
+"draw ..."			:	"égalité ..."
+"Lost!"				:	"Lost!"
+"VICTORY!"			:	"VICTORY!"
+"All levels unlocked !"	:	"All levels unlocked !"
+"Play next level"		:	"Play next level"
+"Retry this level"			:	"Replay level"
+"Retry last level"		:	"Replay last level"
+"Back to level selection"	:	"Back to level selection"
+"Play Selected Level"	:	"Play Selected Level"
+"story mode congratulations"		:	"Congratulations ! You've completed the story mode !"
+
+#MainMenuUI
+"Multiplayer"	:	"Multiplayer"
+"Solo"		    :	"Solo"
+"Map Editor"	:	"Map Editor"
+"Settings"		:	"Settings"
+"Quit"		    :	"Quit"
+
+"Back to main menu"		:	"Back to main menu"
+"Multiplayer menu"		:	"Multiplayer menu"
+"Play"		            :	"Play"
+"Back"	        		:	"Back"
+"Infinite Mode"		    :	"Infinite Mode"
+"Story Mode"		    :	"Story Mode"
+"Replay"		        :	"Replay"
+
+#InfiniteMenuUI
+"Highscore"			:	"Highscore"
+"No bonus"          :   "No bonus"
+"Limited turns"     :   "Limited turns"
+"No crates"         :   "No crates"
+"Random Maze"		:	"Random Maze"
+"Turns left" : "Turns left"
+
+#WelcomingMenu UI
+"Press [%s] to play"    :     "Press [%s] to play"
+
+#MapEditor
+"Save"   :    "Save"
+"Width"  :    "Width"
+"Height" :    "Height"
+"Edit"   :    "Edit"
+"New"    :    "New"
+
+#Story
+"story1"    :   "Bianca, the most beautiful princess in the whole kingdom and Maximilien,\nthe most doughty man among the knights lived a passionate idyll.\nTheir love was so powerful that Lord Plétor became envious."
+"story2"    :   "Driven by wrath and jealousy, he kidnapped Maximilien and locked him inside\nthe highest dungeon of his castle.\n"You will lie here forever and I will marry princess Bianca", said Plétor"
+"story3"    :   "Out of despair, alone in the dungeon, the knight finally met Bernard the magician,\nwho was quite struggling under a pile of rags."
+"story4"    :   ""I can help you to escape this prison and see your wife again. Here are\nsome bombs to help you in your task. It won't be easy to find your way\naround the castle because it is huge and heavily guarded.\nBut I'm sure you will figure it out and meet princess Bianca again" said Bernard"
+"Skip"      :   "Skip"
+"Next chapter"  :   "Next chapter"
+"The hero"      :   "The hero"
+"The princess"  :   "The princess"
+"The magician"  :   "The magician"
+"The bad guy"   :   "The bad guy"

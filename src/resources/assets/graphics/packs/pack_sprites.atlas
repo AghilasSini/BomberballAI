@@ -1,0 +1,272 @@
+
+pack_sprites.png
+size: 512,64
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+arrowSpeed
+  rotate: false
+  xy: 236, 29
+  size: 16, 10
+  orig: 16, 10
+  offset: 0, 0
+  index: -1
+arrowSpeedInfo
+  rotate: false
+  xy: 2, 26
+  size: 53, 31
+  orig: 53, 31
+  offset: 0, 0
+  index: -1
+bomb
+  rotate: false
+  xy: 38, 8
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: -1
+bomb_bonus
+  rotate: false
+  xy: 197, 41
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: -1
+cell_select
+  rotate: false
+  xy: 215, 41
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: -1
+crate
+  rotate: false
+  xy: 2, 2
+  size: 16, 22
+  orig: 16, 22
+  offset: 0, 0
+  index: -1
+crate_bomb
+  rotate: false
+  xy: 161, 35
+  size: 16, 22
+  orig: 16, 22
+  offset: 0, 0
+  index: -1
+crate_explo
+  rotate: false
+  xy: 20, 2
+  size: 16, 22
+  orig: 16, 22
+  offset: 0, 0
+  index: -1
+crate_speed
+  rotate: false
+  xy: 179, 35
+  size: 16, 22
+  orig: 16, 22
+  offset: 0, 0
+  index: -1
+doors_leaf_closed
+  rotate: false
+  xy: 57, 25
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: -1
+doors_leaf_open
+  rotate: false
+  xy: 91, 25
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: -1
+edge
+  rotate: false
+  xy: 233, 41
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: -1
+edge_left
+  rotate: false
+  xy: 251, 41
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: -1
+edge_right
+  rotate: false
+  xy: 269, 41
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: -1
+explo_bonus
+  rotate: false
+  xy: 287, 41
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: -1
+flask_big_blue
+  rotate: false
+  xy: 305, 41
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: -1
+flask_big_green
+  rotate: false
+  xy: 323, 41
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: -1
+flask_big_red
+  rotate: false
+  xy: 341, 41
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: -1
+flask_big_yellow
+  rotate: false
+  xy: 359, 41
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: -1
+floor
+  rotate: false
+  xy: 377, 41
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: -1
+floor_ladder
+  rotate: false
+  xy: 395, 41
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: -1
+plain_9patch
+  rotate: false
+  xy: 413, 41
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: -1
+speed_bonus
+  rotate: false
+  xy: 431, 41
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: -1
+ui_heart_full
+  rotate: false
+  xy: 449, 41
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: -1
+wall
+  rotate: false
+  xy: 125, 25
+  size: 16, 32
+  orig: 16, 32
+  offset: 0, 0
+  index: -1
+wall_left
+  rotate: false
+  xy: 467, 41
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: -1
+wall_mid
+  rotate: false
+  xy: 485, 41
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: -1
+wall_right
+  rotate: false
+  xy: 56, 7
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: -1
+wall_side_front_left
+  rotate: false
+  xy: 74, 7
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: -1
+wall_side_front_right
+  rotate: false
+  xy: 92, 7
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: -1
+wall_side_mid_left
+  rotate: false
+  xy: 110, 7
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: -1
+wall_side_mid_right
+  rotate: false
+  xy: 128, 7
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: -1
+wall_side_top_left
+  rotate: false
+  xy: 146, 7
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: -1
+wall_side_top_right
+  rotate: false
+  xy: 164, 17
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: -1
+wall_top
+  rotate: false
+  xy: 143, 25
+  size: 16, 32
+  orig: 16, 32
+  offset: 0, 0
+  index: -1
+wall_top_left
+  rotate: false
+  xy: 182, 17
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: -1
+wall_top_mid
+  rotate: false
+  xy: 200, 23
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: -1
+wall_top_right
+  rotate: false
+  xy: 218, 23
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: -1
