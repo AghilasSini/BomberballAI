@@ -4,11 +4,11 @@ import com.glhf.bomberball.Bomberball;
 import com.glhf.bomberball.ai.AIThread;
 import com.glhf.bomberball.ai.AbstractAI;
 import com.glhf.bomberball.ai.GameState;
+import com.glhf.bomberball.ai.RandomAI;
 import com.glhf.bomberball.config.GameMultiConfig;
 import com.glhf.bomberball.gameobject.Player;
 import com.glhf.bomberball.ui.GameUI;
-
-
+import com.glhf.bomberball.utils.Action;
 import com.glhf.bomberball.maze.Maze;
 
 
@@ -78,7 +78,6 @@ public class GameMultiScreen extends GameScreen {
             i = (i + 1) % players.size();
         } while (!players.get(i).isAlive());
         current_player = players.get(i);
-        current_player.setCurrentPlayerId(i);
         current_player.initiateTurn();
         gameState.setCurrentPlayerId(i);
         setMoveEffect();
@@ -88,7 +87,7 @@ public class GameMultiScreen extends GameScreen {
 
     @Override
     protected void endGame() {
-        Bomberball.changeScreen(new VictoryMenuScreen(winner, this.maze_id));
+        	Bomberball.changeScreen(new VictoryMenuScreen(winner, this.maze_id, true));
     }
 
     @Override
@@ -98,11 +97,98 @@ public class GameMultiScreen extends GameScreen {
         current_player.setCurrentPlayerId(0);
         current_player.initiateTurn();      //after the UI because initiateTurn notify the ui
         gameState=new GameState(maze,0);
-        gameState.launchTurn(this);
+        launchTurn();
         setMoveMode();
     }
     
+/// Handling the AI 
+    @SuppressWarnings("deprecation")
+   	public synchronized void playAI() {
+   		
+       	if (maze.getPlayers().get(currentPlayerId) instanceof AbstractAI) {
+       		ExecutorService executor = Executors.newSingleThreadExecutor();
+               AbstractAI ia = (AbstractAI) maze.getPlayers().get(currentPlayerId);
+               AIThread calcul = new AIThread(ia, gameState, executor);
+               executor.execute(calcul);
+               try {
+               	 if (!executor.awaitTermination(AbstractAI.TIME_TO_THINK, TimeUnit.MILLISECONDS)) {
+               		 executor.shutdown();
+               	 }
+               }catch (InterruptedException e) {
+               	e.getStackTrace();
+   			}
+               
+               try {
+               	calcul.join();
+               }catch (InterruptedException e) {
+               	 e.getStackTrace();
+   			}
+               
+               Action action;
+               if (calcul.getChoosedAction() == null && ia.getMemorizedAction() == null) {
+               	GameMultiConfig config = GameMultiConfig.get();
+               	System.out.println(currentPlayerId);
+               	action = (Action) new RandomAI(config,config.player_skins[currentPlayerId],currentPlayerId).choosedAction(gameState);
+              
+               }else if (calcul.getChoosedAction() == null && ia.getMemorizedAction() != null) {
+       		
+       		              System.err.println("Aucune action choisie mais action mémorisée");
+       		                action = ia.getMemorizedAction();
+       		
+       		
+       		            } else {
+       		
+       		                action = calcul.getChoosedAction();
+       		}
+       		
+           
+               	applyAction(action);
+                endTurn();
+            
+                 // Kill remaining IAThread threads
+                 for (Thread t : Thread.getAllStackTraces().keySet()) {
+                     for (StackTraceElement ste : t.getStackTrace()) {
+                         if (ste.getClassName().equals("com.glhf.bomberball.ai")) {
+                             t.stop();
+                         }
+                     }
+                 }
+     
+                 try {
+     
+                     Thread.sleep(200);
+                 } catch (InterruptedException ex) {
+     
+     
+                 }
+     
+               
+               
+               
+       	}
+   		
+   	}
+   	
+       
 
+   	
+       public void launchTurn() {
+           Thread t = new Thread(() -> {
+        
+   			//logger.debug("Is there any Information");
+           	
+           	while (current_player instanceof AbstractAI && !gameState.isOver()) {
+           	 
+                   playAI();
+                  
+                            	
+                   
+           	}
+           });
+           
+           t.start();
+          
+       }
    
     
 

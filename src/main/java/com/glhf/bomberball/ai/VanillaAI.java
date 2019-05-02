@@ -22,6 +22,7 @@ public class VanillaAI extends AbstractAI{
 		Random rand = new Random();
 		List<Action> possibleActions= gameState.getAllPossibleActions();
 		int actionIndex=rand.nextInt(possibleActions.size());
+		System.out.println(possibleActions.get(actionIndex));
 		return  possibleActions.get(actionIndex);
 	}
 	

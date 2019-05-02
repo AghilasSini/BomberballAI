@@ -128,7 +128,60 @@ public abstract class GameScreen extends AbstractScreen {
         input_handler.registerActionHandler(Action.MOVE_RIGHT, () -> moveCurrentPlayer(Directions.RIGHT));
     }
 
-
+// 
+    
+    public void applyAction(Action a) {
+		switch (a) {
+		case MOVE_UP:
+			moveCurrentPlayer(Directions.UP);
+			
+			break;
+		case MOVE_DOWN:
+			moveCurrentPlayer(Directions.DOWN);
+			break;
+		case MOVE_LEFT:
+			moveCurrentPlayer(Directions.LEFT);
+			break;
+		case MOVE_RIGHT:
+			moveCurrentPlayer(Directions.RIGHT);
+			break;
+		case DROP_BOMB_RIGHT:
+			dropBomb(Directions.RIGHT);
+			break;
+		case DROP_BOMB_UP:
+			dropBomb(Directions.UP);
+			break;
+		case DROP_BOMB_LEFT:
+			
+			dropBomb(Directions.LEFT);
+			break;
+		case DROP_BOMB_DOWN:
+			
+			dropBomb(Directions.DOWN);
+			break;
+		case ENDTURN:
+			endTurn();
+			
+			break;
+		default:
+			break;
+		}
+		
+    }   
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     ////////////////////////////////////////////////////////////////////////////
 
     protected void moveCurrentPlayer(Directions dir) {

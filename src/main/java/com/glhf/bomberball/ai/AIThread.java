@@ -1,11 +1,9 @@
 package com.glhf.bomberball.ai;
 
 import java.util.concurrent.ExecutorService;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 import com.glhf.bomberball.utils.Action;
-import com.glhf.bomberball.maze.Maze;
+
 
 
 
@@ -60,9 +58,7 @@ public class AIThread extends Thread {
 	        	choosedAction = ai.choosedAction((GameState) gameState.clone());
 	        }
 	        catch (Exception ex) {
-	            Logger.getLogger(Maze.class.getName()).log(Level.SEVERE, null, ex);
-	        }
-	        finally {
+	         
 	           executor.shutdownNow();
 	        }
 	    }

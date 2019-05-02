@@ -92,6 +92,9 @@ public class Bomberball extends Game {
 	public static void changeScreen(Screen screen) {
 		instance.setScreen(screen);
 	}
+	public static void reinitialize() {
+		instance.create();
+	}
 
 	public static void resizeWindow(Resolutions res){
 		instance.resize(res.width, res.height);
