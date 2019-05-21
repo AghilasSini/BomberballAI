@@ -10,7 +10,7 @@ build/**
 .classpath
 .project
 **/assetsconfigs/
-**assets/
+assets/
 
 /build/
 /bin/
