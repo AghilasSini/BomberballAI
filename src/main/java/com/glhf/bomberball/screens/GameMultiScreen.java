@@ -191,6 +191,9 @@ public class GameMultiScreen extends GameScreen {
 			}
 
 			System.out.println("--------------------------------------------------------------> " + action);
+//			if (NumberTurn.getInstance().getNbTurn() == TURN_LIMIT) {
+//				action = Action.DROP_BOMB_LEFT;
+//			}
 			applyAction(action);
 
 			// Kill remaining IAThread threads
