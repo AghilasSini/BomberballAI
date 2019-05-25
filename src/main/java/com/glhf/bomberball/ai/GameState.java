@@ -6,25 +6,22 @@ import java.util.List;
 import com.glhf.bomberball.gameobject.Player;
 import com.glhf.bomberball.maze.Maze;
 import com.glhf.bomberball.maze.cell.Cell;
-import com.glhf.bomberball.screens.GameMultiScreen;
 import com.glhf.bomberball.utils.Action;
 import com.glhf.bomberball.utils.Directions;
 
 public class GameState {
 	private Maze maze;
-	private List<Player> players;
 	private int current_player_id;
 	private int remaining_turns;
 
 	public GameState(Maze maze, int currentPlayerId, int turnNumber) {
 		this.maze = maze;
-		this.players = maze.getPlayers();
 		this.current_player_id = currentPlayerId;
 		this.remaining_turns = turnNumber;
 	}
 
 	public List<Player> getPlayers() {
-		return players;
+		return maze.getPlayers();
 	}
 
 	public int getCurrentPlayerId() {
@@ -45,7 +42,7 @@ public class GameState {
 	public boolean gameIsOver() {
 		int nAlive = 0;
 		if (getRemainingTurns() == 0) { return true; }
-		for (Player p : players) {
+		for (Player p : getPlayers()) {
 			if (p.isAlive()) {
 				nAlive++;
 			}
@@ -63,7 +60,7 @@ public class GameState {
 	public Player getWinner() {
 		int nAlive = 0;
 		Player winner = null;
-		for (Player p : players) {
+		for (Player p : getPlayers()) {
 			if (p.isAlive()) {
 				nAlive++;
 				winner = p;
@@ -76,14 +73,14 @@ public class GameState {
 	}
 
 	public Player getCurrentPlayer() {
-		return players.get(current_player_id);
+		return getPlayers().get(current_player_id);
 	}
 
 	public List<Action> getAllPossibleActions() {
 
 		List<Action> possibleActions = new ArrayList<Action>();
 
-		Player current_player = players.get(current_player_id);
+		Player current_player = getPlayers().get(current_player_id);
 
 		// Right
 		List<Cell> adjacentCells = current_player.getCell().getAdjacentCells();
@@ -95,15 +92,6 @@ public class GameState {
 				possibleActions.add(Action.MOVE_RIGHT);
 			}
 		}
-		// Up
-		if (adjacentCells.get(1) != null && adjacentCells.get(1).isWalkable()) {
-			if (current_player.getNumberBombRemaining() > 0) {
-				possibleActions.add(Action.DROP_BOMB_UP);
-			}
-			if (current_player.getMovesRemaining() > 0) {
-				possibleActions.add(Action.MOVE_UP);
-			}
-		}
 		// Left
 		if (adjacentCells.get(2) != null && adjacentCells.get(2).isWalkable()) {
 			if (current_player.getNumberBombRemaining() > 0) {
@@ -111,6 +99,15 @@ public class GameState {
 			}
 			if (current_player.getMovesRemaining() > 0) {
 				possibleActions.add(Action.MOVE_LEFT);
+			}
+		}
+		// Up
+		if (adjacentCells.get(1) != null && adjacentCells.get(1).isWalkable()) {
+			if (current_player.getNumberBombRemaining() > 0) {
+				possibleActions.add(Action.DROP_BOMB_UP);
+			}
+			if (current_player.getMovesRemaining() > 0) {
+				possibleActions.add(Action.MOVE_UP);
 			}
 		}
 		// Down
@@ -136,9 +133,9 @@ public class GameState {
 	
 	protected void nextPlayer() {
 		do {
-			current_player_id = (current_player_id + 1) % players.size();
-		} while (!players.get(current_player_id).isAlive());
-		players.get(current_player_id).initiateTurn();
+			current_player_id = (current_player_id + 1) % getPlayers().size();
+		} while (!getPlayers().get(current_player_id).isAlive());
+		getPlayers().get(current_player_id).initiateTurn();
 	}
 	
     public void endTurn()

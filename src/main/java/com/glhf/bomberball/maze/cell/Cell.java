@@ -278,4 +278,12 @@ public class Cell {
         int dy = y - cell.y;
         return (float) Math.sqrt(dx*dx+dy*dy);
     }
+
+
+	@Override
+	public String toString() {
+		return "Cell [x=" + x + ", y=" + y + ", objects=" + objects + "]";
+	}
+    
+    
 }

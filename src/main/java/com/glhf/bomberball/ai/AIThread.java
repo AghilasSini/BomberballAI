@@ -59,6 +59,7 @@ public class AIThread extends Thread {
 	        	executor.shutdownNow();
 	        }
 	        catch (Exception ex) {
+	        	ex.printStackTrace();
 	           executor.shutdownNow();
 	        }
 	    }

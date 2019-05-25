@@ -63,17 +63,24 @@ public class Maze implements Cloneable{
 		for (int i = 0; i < players.size(); i++) {
 			mazeClone.spawn_positions.add(((VectorInt2) spawn_positions.get(i)));
 		}
-        
-		mazeClone.players = new ArrayList<Player>(players.size());
-		for (int i = 0; i < players.size(); i++) {
-			Player playerClone = ((Player) players.get(i).clone());
-			Cell playerCell = playerClone.getCell();
-			playerClone.setCell(mazeClone.getCellAt(playerCell.getX(), playerCell.getY()));
-			mazeClone.players.add(playerClone);
-		}
 
 		// Browse all cell clones and set players as well as cell adjacency
 		mazeClone.initialize();
+        
+		mazeClone.players = new ArrayList<Player>(players.size());
+		// Initialize list
+		for (int i = 0; i < players.size(); i++) {
+			mazeClone.players.add(null);
+		}
+		// Set real values
+		for (int i = 0; i < players.size(); i++) {
+			Cell playerCell = players.get(i).getCell();
+			Cell playerCloneCell = mazeClone.getCellAt(playerCell.getX(), playerCell.getY());
+			for (Player p : playerCloneCell.getInstancesOf(Player.class)) {
+				int id = p.getPlayerId();
+				mazeClone.players.set(id, p);
+			}
+		}
 		
 		return mazeClone;
 	 
@@ -121,17 +128,16 @@ public class Maze implements Cloneable{
         return players;
     }
     
-//    public void spawnPlayers(List<Player> players)
-//    {
-//        this.players = players;
-//        int n = players.size();
-//        for (int i = 0; i < n; i++) {
-//            VectorInt2 pos = spawn_positions.get(i);
-//            Player player = spawnPlayer(config, config.player_skins[i], cells[pos.x][pos.y]);
-//            players.add(player);
-//        }
-//        return players;
-//    }
+    public void spawnPlayers(List<Player> players)
+    {
+        this.players = players;
+        int n = players.size();
+        for (int i = 0; i < n; i++) {
+            VectorInt2 pos = spawn_positions.get(i);
+            Player player = players.get(i);
+            setPlayer(player, cells[pos.x][pos.y]);
+        }
+    }
 
     private Player spawnPlayer(GameConfig config, String player_skin, Cell cell) {
         Player player = new Player(
@@ -143,6 +149,11 @@ public class Maze implements Cloneable{
         cell.addGameObject(player);
         return player;
     }
+    
+    private void setPlayer(Player player, Cell cell) {
+        player.setCell(cell);
+    }
+
 
     public List<VectorInt2> getPlayersSpawns() {
         return spawn_positions;

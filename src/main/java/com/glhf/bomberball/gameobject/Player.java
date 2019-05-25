@@ -10,17 +10,19 @@ import com.glhf.bomberball.utils.Directions;
 public class Player extends Character {
 
     private ArrayList<Observer> observers;
-    private boolean active;
+    protected boolean active;
+    protected String name;
 
-    private int initial_bomb_number;
-    private int initial_bomb_range;
+    protected int initial_bomb_number;
+    protected int initial_bomb_range;
 
-    private transient int bombs_remaining;
+    protected transient int bombs_remaining;
 
     public transient int bonus_bomb_number = 0;
     public transient int bonus_bomb_range = 0;
     public transient int bonus_moves = 0;
     protected int player_id;
+    
     public Player(String player_skin,
                   int life,
                   int initial_moves,
@@ -30,10 +32,27 @@ public class Player extends Character {
         super(player_skin, life, initial_moves);
         this.observers = new ArrayList<>();
         this.active = false;
+        this.name = "Human";
         this.initial_bomb_number = initial_bomb_number;
         this.initial_bomb_range = initial_bomb_range;
         initialize();
     }
+    
+    public Player(String player_skin,
+            int life,
+            int initial_moves,
+            int initial_bomb_number,
+            int initial_bomb_range,
+            String name)
+	{
+	  super(player_skin, life, initial_moves);
+	  this.observers = new ArrayList<>();
+	  this.active = false;
+	  this.name = name;
+	  this.initial_bomb_number = initial_bomb_number;
+	  this.initial_bomb_range = initial_bomb_range;
+	  initialize();
+	}
 
     @Override
     public void initialize() {
@@ -128,7 +147,7 @@ public class Player extends Character {
 
     @Override
     public GameObject clone() {
-        Player clone = new Player(skin, life, initial_moves, initial_bomb_number, initial_bomb_range);
+        Player clone = new Player(skin, life, initial_moves, initial_bomb_number, initial_bomb_range, name);
         clone.sprite = this.sprite;
         clone.cell = this.cell;
         
@@ -152,5 +171,14 @@ public class Player extends Character {
 		this.player_id=playerId;
 		
 	}
+
+	@Override
+	public String toString() {
+		return "Player [ name=" + name + ", bombs_remaining="
+				+ bombs_remaining + ", player_id=" + player_id + ", moves_remaining=" + moves_remaining + ", life="
+				+ life + "]";
+	}
+	
+	
 }
 

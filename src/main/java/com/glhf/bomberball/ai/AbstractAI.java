@@ -1,22 +1,19 @@
 package com.glhf.bomberball.ai;
 
+
 import com.glhf.bomberball.config.GameConfig;
 import com.glhf.bomberball.gameobject.Player;
 import com.glhf.bomberball.utils.Action;
 
 public abstract class AbstractAI extends Player {
-	protected String name;
 
-	public static int TIME_TO_THINK = 1000;
+	public static int TIME_TO_THINK = 2000;
 	protected Action memorizedAction;
 
 	public AbstractAI(GameConfig config, String player_skin, String name, int playerId) {
-
-		super(player_skin, config.player_life, config.initial_player_moves,config.initial_bomb_number,
-				config.initial_bomb_range);
-		this.name = name;
+		super(player_skin, config.player_life, config.initial_player_moves, config.initial_bomb_number,
+				config.initial_bomb_range, name);
 		this.player_id = playerId;
-		// TODO Auto-generated constructor stub
 	}
 
 	public void setMemorizedAction(Action memorizedAction) {
@@ -43,7 +40,10 @@ public abstract class AbstractAI extends Player {
 
 	@Override
 	public String toString() {
-		return "AbstractAI [name=" + name + ", player_id=" + player_id + "]";
+		return "AbstractAI [name=" + name + ", life=" + life + ", bombs_remaining=" + bombs_remaining + ", player_id=" + player_id
+				+ ", moves_remaining=" + moves_remaining + "]";
 	}
+
+
 
 }

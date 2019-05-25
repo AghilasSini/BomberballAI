@@ -48,7 +48,8 @@ public class GameMultiScreen extends GameScreen {
 		super(maze);
 		this.maze_id = maze_id;
 		this.players = players;
-		this.maze.setPlayers(players);
+//		this.maze.setPlayers(players);
+		this.maze.spawnPlayers(players);
 		this.enAttente = new LinkedBlockingQueue<Object>(1);
 		NumberTurn.getInstance().setNbTurn(TURN_LIMIT);
 		addUI(new GameUI(this.players, false, true));

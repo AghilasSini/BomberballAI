@@ -10,8 +10,6 @@ import java.util.*;
 
 public class MazeTransversal{
 
-    private static Random rand = new Random();
-
     /**
      * Returns all reacheable cells whitin a specified range from a cell
      * @param cell_origin
@@ -217,7 +215,8 @@ public class MazeTransversal{
      * @param range
      * @return ArrayList<Directions>
      */
-    public static ArrayList<Directions> depth_graph_transversal(Cell cell_origin, int range) {
+    @SuppressWarnings("unchecked")
+	public static ArrayList<Directions> depth_graph_transversal(Cell cell_origin, int range) {
         ArrayList<Cell> cells = new ArrayList<>();
         LinkedList<Cell> active_queue = new LinkedList<>();
         LinkedList<Cell> inactive_queue = new LinkedList<>();

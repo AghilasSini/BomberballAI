@@ -69,7 +69,6 @@ public abstract class Config {
      * Exports a config
      * @param name Config file name
      */
-    @SuppressWarnings("ResultOfMethodCallIgnored")
     public void exportConfig(String name) {
         try {
             File file = new File(Constants.PATH_CONFIGS + name + ".json");
