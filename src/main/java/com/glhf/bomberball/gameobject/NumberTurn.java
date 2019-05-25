@@ -10,7 +10,7 @@ public class NumberTurn extends Observable {
         nbturn=GameInfiniteConfig.get().nbturnmax;
     }
     private static NumberTurn INSTANCE = new NumberTurn();
-    public static NumberTurn getINSTANCE(){
+    public static NumberTurn getInstance(){
         return INSTANCE;
     }
     public void decreaseTurn(int n){
@@ -19,12 +19,20 @@ public class NumberTurn extends Observable {
         setChanged();
         notifyObservers();
     }
+    
     public void resetNbTurn(){
         this.nbturn=GameInfiniteConfig.get().nbturnmax;
         System.out.println("Reset of nb turn left");
         setChanged();
         notifyObservers();
     }
+    
+    public void setNbTurn(int n) {
+        this.nbturn=n;
+        setChanged();
+        notifyObservers();
+    }
+    
     public int getNbTurn(){
         return nbturn;
     }

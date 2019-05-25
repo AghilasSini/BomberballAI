@@ -10,6 +10,7 @@ import com.badlogic.gdx.utils.Align;
 import com.badlogic.gdx.utils.Scaling;
 import com.glhf.bomberball.Graphics;
 import com.glhf.bomberball.gameobject.Player;
+import java.util.List;
 import java.util.ArrayList;
 import java.util.Observable;
 import java.util.Observer;
@@ -18,7 +19,7 @@ import static com.glhf.bomberball.utils.Constants.PATH_GRAPHICS;
 
 public class PlayersInfoUI extends Table {
 
-    public PlayersInfoUI(ArrayList<Player> players) {
+    public PlayersInfoUI(List<Player> players) {
         for (Player player : players) {
             PlayerWidget pw = new PlayerWidget(player);
             this.add(pw).growX().prefHeight(Value.percentHeight(1/3f, this)).space(Value.percentHeight(0.05f, this));

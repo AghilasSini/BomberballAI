@@ -2,197 +2,213 @@ package com.glhf.bomberball.ai;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-import java.util.concurrent.TimeUnit;
 
-import com.glhf.bomberball.Bomberball;
-import com.glhf.bomberball.config.GameMultiConfig;
 import com.glhf.bomberball.gameobject.Player;
 import com.glhf.bomberball.maze.Maze;
-import com.glhf.bomberball.maze.MazeTransversal;
 import com.glhf.bomberball.maze.cell.Cell;
-import com.glhf.bomberball.screens.GameScreen;
-import com.glhf.bomberball.screens.VictoryMenuScreen;
+import com.glhf.bomberball.screens.GameMultiScreen;
 import com.glhf.bomberball.utils.Action;
 import com.glhf.bomberball.utils.Directions;
-
-
 
 public class GameState {
 	private Maze maze;
 	private List<Player> players;
-	private int currentPlayerId;
-	private Player currentPlayer;
+	private int current_player_id;
+	private int turn_number;
 
-	 
-	 
-	 
-	public GameState(Maze maze, int currentPlayerId) {
-		this.maze=maze;
-		this.players= maze.getPlayers();
-		this.currentPlayerId = currentPlayerId;
-		currentPlayer=players.get(currentPlayerId);
+	public GameState(Maze maze, int currentPlayerId, int turnNumber) {
+		this.maze = maze;
+		this.players = maze.getPlayers();
+		this.current_player_id = currentPlayerId;
+		this.turn_number = turnNumber;
 	}
-	
+
 	public List<Player> getPlayers() {
 		return players;
 	}
-	
+
 	public int getCurrentPlayerId() {
-		return currentPlayerId;
+		return current_player_id;
 	}
+
 	public void setCurrentPlayerId(int currentPlayerId) {
-		this.currentPlayerId=currentPlayerId;
+		this.current_player_id = currentPlayerId;
 	}
+
 	public GameState clone() {
-		GameState gameSateClone=new GameState((Maze) this.maze.clone(),this.currentPlayerId);
-		gameSateClone.currentPlayer=(Player) currentPlayer.clone();
-		return gameSateClone;
-		
+		GameState gameStateClone = new GameState((Maze) this.maze.clone(),
+												this.current_player_id,
+												this.turn_number);
+		return gameStateClone;
 	}
-	public boolean isOver() {
+
+	public boolean gameIsOver() {
 		int nAlive = 0;
+		if (getTurnNumber() == GameMultiScreen.TURN_LIMIT) { return true; }
 		for (Player p : players) {
-			if (p.isAlive()) { nAlive++; }
-			if (nAlive > 1) { return false; }
+			if (p.isAlive()) {
+				nAlive++;
+			}
+			if (nAlive > 1) {
+				return false;
+			}
 		}
 		return true;
 	}
 	
-	public Player getCurrentPlayer() {
-		return players.get(currentPlayerId);
+	/**
+	 * Return the winner or null if none (draw or the game is not over)
+	 * @return An instance of Player or null
+	 */
+	public Player getWinner() {
+		int nAlive = 0;
+		Player winner = null;
+		for (Player p : players) {
+			if (p.isAlive()) {
+				nAlive++;
+				winner = p;
+			}
+			if (nAlive > 1) {
+				winner = null;
+			}
+		}
+		return winner;
 	}
-	
-	
-	public List<Action> getAllPossibleActions(){
+
+	public Player getCurrentPlayer() {
+		return players.get(current_player_id);
+	}
+
+	public List<Action> getAllPossibleActions() {
+
+		List<Action> possibleActions = new ArrayList<Action>();
+
+		Player current_player = players.get(current_player_id);
+
+		// Right
+		List<Cell> adjacentCells = current_player.getCell().getAdjacentCells();
+		if (adjacentCells.get(0) != null && adjacentCells.get(0).isWalkable()) {
+			if (current_player.getNumberBombRemaining() > 0) {
+				possibleActions.add(Action.DROP_BOMB_RIGHT);
+			}
+			if (current_player.getMovesRemaining() > 0) {
+				possibleActions.add(Action.MOVE_RIGHT);
+			}
+		}
+		// Up
+		if (adjacentCells.get(1) != null && adjacentCells.get(1).isWalkable()) {
+			if (current_player.getNumberBombRemaining() > 0) {
+				possibleActions.add(Action.DROP_BOMB_UP);
+			}
+			if (current_player.getMovesRemaining() > 0) {
+				possibleActions.add(Action.MOVE_UP);
+			}
+		}
+		// Left
+		if (adjacentCells.get(2) != null && adjacentCells.get(2).isWalkable()) {
+			if (current_player.getNumberBombRemaining() > 0) {
+				possibleActions.add(Action.DROP_BOMB_LEFT);
+			}
+			if (current_player.getMovesRemaining() > 0) {
+				possibleActions.add(Action.MOVE_LEFT);
+			}
+		}
+		// Down
+		if (adjacentCells.get(3) != null && adjacentCells.get(3).isWalkable()) {
+			if (current_player.getNumberBombRemaining() > 0) {
+				possibleActions.add(Action.DROP_BOMB_DOWN);
+			}
+			if (current_player.getMovesRemaining() > 0) {
+				possibleActions.add(Action.MOVE_DOWN);
+			}
+		}
 		
-		List <Action> possibleActions=new ArrayList<Action>();
-		// if the player is alive so it can choose to 
+		// if the player is alive so it can choose to
 		// pass the turn by activating the Action.EndTurn
 		possibleActions.add(Action.ENDTURN);
 		
-		currentPlayer=players.get(currentPlayerId);
-		List<Cell> reachableCells=MazeTransversal.getReacheableCells(currentPlayer.getCell());
-		for (Cell cell :reachableCells) {
-			// get the direction
-			Directions possibleDirection=currentPlayer.getCell().getCellDir(cell);
-			
-			
-			if (possibleDirection !=null ){
-				if(currentPlayer.getMovesRemaining()>0)
-					possibleActions.add(getPossibleMove(possibleDirection));
-			
-			
-				if(currentPlayer.getNumberBombRemaining()>0)
-						possibleActions.add(getPossibleBombDropping(possibleDirection));
-	
-			}
-			
-		
-		}
-		
 		return possibleActions;
 	}
-		
-		
-		
-	private Action getPossibleMove(Directions direction) {
-		Action possibleAction=null;
-		 switch (direction) {
-			case DOWN:
-				possibleAction=Action.MOVE_DOWN;
-				break;
-			case LEFT:
-				possibleAction=Action.MOVE_LEFT;
-			case UP:
-				possibleAction=Action.MOVE_UP;
-				break;
-			case RIGHT:
-				possibleAction=Action.MOVE_RIGHT;
-				break;
-			default:
-				break;
-			}
-		 return possibleAction;
-	}
-
-	private Action getPossibleBombDropping(Directions direction) {
-		Action possibleAction=null;
-		 switch (direction) {
-			case DOWN:
-				possibleAction=Action.DROP_BOMB_DOWN;
-				break;
-			case LEFT:
-				possibleAction=Action.DROP_BOMB_LEFT;
-			case UP:
-				possibleAction=Action.DROP_BOMB_UP;
-				break;
-			case RIGHT:
-				possibleAction=Action.DROP_BOMB_RIGHT;
-				break;
-			default:
-				break;
-			}
-		 return possibleAction;
-	}
-
 	
+	public boolean turnIsOver() {
+    	return (getCurrentPlayer().getMovesRemaining() == 0 && getCurrentPlayer().getNumberBombRemaining() == 0);
+    }
 	
+	protected void nextPlayer() {
+		do {
+			current_player_id = (current_player_id + 1) % players.size();
+		} while (!players.get(current_player_id).isAlive());
+		players.get(current_player_id).initiateTurn();
+	}
+	
+    public void endTurn()
+    {
+	    maze.processEndTurn();
+	    getCurrentPlayer().endTurn();
+	    
+	    turn_number++;
+	    if (!gameIsOver()) {
+	    	nextPlayer();
+	    }
+
+    }
+
+
 	public void apply(Action action) {
-		// TODO Auto-generated method stub
-		currentPlayer=getCurrentPlayer();
 		switch (action) {
 		case MOVE_UP:
-			
-			currentPlayer.move(Directions.UP);
-			
+			getCurrentPlayer().move(Directions.UP);
 			break;
+			
 		case MOVE_DOWN:
-		
-			currentPlayer.move(Directions.DOWN);
+			getCurrentPlayer().move(Directions.DOWN);
 			break;
+			
 		case MOVE_LEFT:
-			
-			currentPlayer.move(Directions.LEFT);
+			getCurrentPlayer().move(Directions.LEFT);
 			break;
+			
 		case MOVE_RIGHT:
-		
-			currentPlayer.move(Directions.RIGHT);
+			getCurrentPlayer().move(Directions.RIGHT);
 			break;
+			
 		case DROP_BOMB_RIGHT:
-			
-			currentPlayer.dropBomb(Directions.RIGHT);
+			getCurrentPlayer().dropBomb(Directions.RIGHT);
 			break;
+			
 		case DROP_BOMB_UP:
-		
-			currentPlayer.dropBomb(Directions.UP);
+			getCurrentPlayer().dropBomb(Directions.UP);
 			break;
-		case DROP_BOMB_LEFT:
-		
-			currentPlayer.dropBomb(Directions.LEFT);
-			break;
-		case DROP_BOMB_DOWN:
 			
-			currentPlayer.dropBomb(Directions.DOWN);
+		case DROP_BOMB_LEFT:
+			getCurrentPlayer().dropBomb(Directions.LEFT);
 			break;
+			
+		case DROP_BOMB_DOWN:
+			getCurrentPlayer().dropBomb(Directions.DOWN);
+			break;
+			
 		case ENDTURN:
-			currentPlayer.endTurn();
+			endTurn();
 			break;
+			
 		default:
 			break;
 		}
-		
+
+		// Force to end the turn if no more action are possible
+		if (action != Action.ENDTURN && turnIsOver()) {
+			endTurn();
+		}
+
 	}
-	
 
-
-   
-	
-	
-    public Maze getMaze() {
+	public Maze getMaze() {
 		return maze;
 	}
 	
-	
+	public int getTurnNumber() {
+		return turn_number;
+	}
+
 }

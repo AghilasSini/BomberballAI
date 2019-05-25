@@ -28,7 +28,7 @@ public class AIThread extends Thread {
 	    /**
 	     * Coup choisi a l'issu de la recherche
 	     */
-	    private Action choosedAction;
+	    private Action chosenAction;
 
 	    /**
 	     * Constructor
@@ -42,11 +42,11 @@ public class AIThread extends Thread {
 	        this.ai = ai;
 	        this.gameState = gameState;
 	        this.executor = executor;
-	        this.choosedAction = null;
+	        this.chosenAction = null;
 	    }
 	    
 	    public Action getChoosedAction() {
-	        return choosedAction;
+	        return chosenAction;
 	    }
 
 	    /**
@@ -55,10 +55,10 @@ public class AIThread extends Thread {
 	    @Override
 	    public void run() {
 	        try {
-	        	choosedAction = ai.choosedAction((GameState) gameState.clone());
+	        	chosenAction = ai.choosedAction((GameState) gameState.clone());
+	        	executor.shutdownNow();
 	        }
 	        catch (Exception ex) {
-	         
 	           executor.shutdownNow();
 	        }
 	    }

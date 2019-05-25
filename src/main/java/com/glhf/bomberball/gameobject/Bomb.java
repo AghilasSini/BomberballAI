@@ -22,9 +22,14 @@ public class Bomb extends GameObject {
         this.range = range;
         sprite = Graphics.Sprites.get("bomb");
     }
+    
+    @Override
+    public GameObject clone() {
+    	return new Bomb(damage, range);
+    }
 
     public void explode() {
-        Audio.BOMB.play();
+//        Audio.BOMB.play();
         cell.explode(null, damage, 0);
         for (Directions dir : Directions.values()) {
             Cell adjacent_cell = cell.getAdjacentCell(dir);

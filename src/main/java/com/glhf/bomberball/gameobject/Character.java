@@ -63,7 +63,7 @@ public abstract class Character extends GameObject {
 
     @Override
     public boolean isWalkable(){
-        return true;
+        return false;
     }
 
     public void endTurn() {

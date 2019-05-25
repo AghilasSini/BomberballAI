@@ -5,16 +5,10 @@ import java.util.ArrayList;
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
-import com.glhf.bomberball.ai.AbstractAI;
 import com.glhf.bomberball.ai.FactoryMethod;
-import com.glhf.bomberball.ai.GameState;
-import com.glhf.bomberball.ai.RandomAI;
 import com.glhf.bomberball.config.AppConfig;
-import com.glhf.bomberball.config.GameConfig;
 import com.glhf.bomberball.config.GameMultiConfig;
 import com.glhf.bomberball.gameobject.Player;
-import com.glhf.bomberball.maze.Maze;
-import com.glhf.bomberball.maze.cell.Cell;
 import com.glhf.bomberball.screens.GameMultiScreen;
 import com.glhf.bomberball.screens.MultiMenuScreen;
 
@@ -66,17 +60,17 @@ public class Bomberball extends Game {
         GameMultiScreen gameMultiScreen=null;
         
         if(player1!=null && player2!=null) {
-	        // player1 position  
+	        // player1 position
 	        VectorInt2 pos1 = screen.maze.getSpawn_positions().get(0);
 	        players.add(factoryAi.getAI(player1,configMultiPlayers, configMultiPlayers.player_skins[0], screen.maze.getCells()[pos1.x][pos1.y],0));
 	        // player2 position 
 			VectorInt2 pos2 = screen.maze.getSpawn_positions().get(1);
 			players.add(factoryAi.getAI(player2,configMultiPlayers, configMultiPlayers.player_skins[1], screen.maze.getCells()[pos2.x][pos2.y],1));
-			gameMultiScreen =new GameMultiScreen(this.screen.maze, this.screen.getMazeId(),this.players);
+			gameMultiScreen = new GameMultiScreen(this.screen.maze, this.screen.getMazeId(),this.players);
 			
         }
         else {
-        	gameMultiScreen=new GameMultiScreen(this.screen.maze, 0);
+        	gameMultiScreen = new GameMultiScreen(this.screen.maze, 0);
         }
        
         changeScreen(gameMultiScreen);

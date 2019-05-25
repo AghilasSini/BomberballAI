@@ -25,9 +25,10 @@
 #Story Menus
 "Level Selection"	:	"Selection des niveaux"
 "Wasted !"		    :	"Wasted !"
-"draw ..."			:	"égalité ..."
-"Lost!"				:	"Perdu!"
-"VICTORY!"			:	"VICTOIRE!"
+"draw ..."			:	"égalité..."
+"Lost!"				:	"Perdu !"
+"VICTORY!"			:	"VICTOIRE !"
+"Human player"            :   "Joueur humain"
 "All levels unlocked !"	:	"Vous avez débloqué tous les niveaux !"
 "Play next level"		:	"Jouer au niveau suivant"
 "Retry this level"			:	"Rejouer le niveau"

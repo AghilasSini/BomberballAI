@@ -13,8 +13,7 @@ public class RandomAI extends AbstractAI{
 
 
 	public RandomAI(GameConfig config,String player_skin,int playerId) {
-		super(config,player_skin,"RandomAI",playerId);
-		// TODO Auto-generated constructor stub
+		super(config,"mort","RandomAI",playerId);
 	}
 
 	@Override
@@ -24,9 +23,8 @@ public class RandomAI extends AbstractAI{
 		List<Action> possibleActions= gameState.getAllPossibleActions();
 		
 		int actionIndex=rand.nextInt(possibleActions.size());
-		
-		
 		return  possibleActions.get(actionIndex);
+//		return  Action.ENDTURN;
 	}
 	
 

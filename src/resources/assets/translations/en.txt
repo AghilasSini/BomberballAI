@@ -28,6 +28,7 @@
 "draw ..."			:	"égalité ..."
 "Lost!"				:	"Lost!"
 "VICTORY!"			:	"VICTORY!"
+"Human player"            :   "Human player"
 "All levels unlocked !"	:	"All levels unlocked !"
 "Play next level"		:	"Play next level"
 "Retry this level"			:	"Replay level"

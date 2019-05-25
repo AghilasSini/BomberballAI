@@ -2,6 +2,7 @@ package com.glhf.bomberball.ai;
 
 import com.glhf.bomberball.utils.Action;
 
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Random;
 
@@ -13,17 +14,28 @@ public class VanillaAI extends AbstractAI{
 	
 
 	public VanillaAI(GameConfig config,String player_skin,int playerId) {
-		super(config,player_skin,"VanillaAI",playerId);		
-		// TODO Auto-generated constructor stub
+		super(config,"skelet","VanillaAI",playerId);
 	}
 
 	@Override
 	public Action choosedAction(GameState gameState) {
 		Random rand = new Random();
 		List<Action> possibleActions= gameState.getAllPossibleActions();
-		int actionIndex=rand.nextInt(possibleActions.size());
-		System.out.println(possibleActions.get(actionIndex));
-		return  possibleActions.get(actionIndex);
+		List<Action> moveActions = new LinkedList<Action>();
+		for (Action a : possibleActions) {
+			if (a == Action.MOVE_UP
+					|| a == Action.MOVE_DOWN
+					|| a == Action.MOVE_LEFT
+					|| a == Action.MOVE_RIGHT) {
+				moveActions.add(a);
+			}
+		}
+		if (moveActions.isEmpty()) {
+			moveActions.add(Action.ENDTURN);
+		}
+		int actionIndex=rand.nextInt(moveActions.size());
+//		System.out.println(possibleActions);
+		return  moveActions.get(actionIndex);
 	}
 	
 

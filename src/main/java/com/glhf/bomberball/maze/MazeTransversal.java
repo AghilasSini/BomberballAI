@@ -30,7 +30,7 @@ public class MazeTransversal{
         while (depth < range) {
             while (!active_queue.isEmpty()) {
                 Cell c = active_queue.poll();
-                for (Cell other : c.getAdjacentCells()) {
+                for (Cell other : c.getAdjacentCellsInMaze()) {
                     if (!cells.contains(other) && other.isWalkable()) {
                         inactive_queue.add(other);
                         cells.add(other);
@@ -58,7 +58,7 @@ public class MazeTransversal{
         queue.add(cell_origin);
         while (!queue.isEmpty()) {
             Cell c = queue.poll();
-            for (Cell other : c.getAdjacentCells()) {
+            for (Cell other : c.getAdjacentCellsInMaze()) {
                 if (!cells.contains(other)) {
                     queue.add(other);
                     cells.add(other);
@@ -78,7 +78,7 @@ public class MazeTransversal{
             if (c.getX() == cell_final.getX() && c.getY() == cell_final.getY()) {
                 return true;
             }
-            for (Cell other : c.getAdjacentCells()) {
+            for (Cell other : c.getAdjacentCellsInMaze()) {
                 if(other.getInstancesOf(IndestructibleWall.class).size() == 0){
                     if (!cells.contains(other)) {
                         queue.add(other);
@@ -231,7 +231,7 @@ public class MazeTransversal{
         while (depth < range) {
             while (!active_queue.isEmpty()) {
                 Cell c = active_queue.poll();
-                for (Cell other : c.getAdjacentCells()) {
+                for (Cell other : c.getAdjacentCellsInMaze()) {
                     if (!cells.contains(other) && other.isWalkable()) {
                         inactive_queue.add(other);
                         path_bis = (ArrayList<Directions>) paths.get(c).clone();

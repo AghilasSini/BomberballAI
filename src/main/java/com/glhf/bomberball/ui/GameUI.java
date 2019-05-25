@@ -10,22 +10,23 @@ import com.glhf.bomberball.gameobject.NumberTurn;
 import com.glhf.bomberball.gameobject.Player;
 import com.glhf.bomberball.gameobject.Score;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Observable;
 import java.util.Observer;
 
 public class GameUI extends Table {
 
-    public GameUI(ArrayList<Player> players, boolean show_score, boolean show_turn) {
+    public GameUI(List<Player> players, boolean show_score, boolean show_turn) {
         setup(players, show_score, show_turn);
     }
 
     public GameUI(Player player, boolean show_score, boolean show_turn) {
-        ArrayList<Player> players = new ArrayList<Player>();
+        List<Player> players = new ArrayList<Player>();
         players.add(player);
         setup(players, show_score, show_turn);
     }
 
-    public void setup(ArrayList<Player> players, boolean show_score, boolean show_turn) {
+    public void setup(List<Player> players, boolean show_score, boolean show_turn) {
         this.setFillParent(true);
 
         ScoreUI score_ui = new ScoreUI();
@@ -74,7 +75,7 @@ public class GameUI extends Table {
             super();
             label = new Label("", Graphics.GUI.getSkin());
             label.setAlignment(Align.center);
-            turn_number = NumberTurn.getINSTANCE();
+            turn_number = NumberTurn.getInstance();
             turn_number.addObserver(this);
             add(label).growX();
             update(null, null);

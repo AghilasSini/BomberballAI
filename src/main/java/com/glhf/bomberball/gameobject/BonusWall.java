@@ -19,7 +19,7 @@ public class BonusWall extends DestructibleWall {
         this.bonus = bonus;
         initialize();
     }
-
+    
     @Override
     public void initialize() {
         super.initialize();

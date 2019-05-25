@@ -32,7 +32,7 @@ public class GameInfiniteScreen extends GameScreen {
         current_player.initiateTurn();      //after the UI because initiateTurn notify the ui
         setMoveMode();
 
-        NumberTurn.getINSTANCE().resetNbTurn();
+        NumberTurn.getInstance().resetNbTurn();
 
         Timer.schedule(new Timer.Task() {   //Verifying if an ennemy has killed the player
             @Override
@@ -71,7 +71,7 @@ public class GameInfiniteScreen extends GameScreen {
     @Override
 	protected void nextPlayer() {
         if(GameInfiniteConfig.get().finite_number_turn){
-            NumberTurn nt = NumberTurn.getINSTANCE();
+            NumberTurn nt = NumberTurn.getInstance();
             nt.decreaseTurn(1);
             if(nt.getNbTurn()==0){
                 endGame();

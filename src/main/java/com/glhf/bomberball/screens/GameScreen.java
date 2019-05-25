@@ -8,6 +8,7 @@ import com.badlogic.gdx.utils.Timer;
 import com.glhf.bomberball.utils.Action;
 
 import com.glhf.bomberball.audio.Audio;
+import com.glhf.bomberball.gameobject.NumberTurn;
 import com.glhf.bomberball.gameobject.Player;
 import com.glhf.bomberball.maze.Maze;
 import com.glhf.bomberball.maze.MazeDrawer;
@@ -18,8 +19,7 @@ import com.glhf.bomberball.utils.VectorInt2;
 
 
 import java.util.ArrayList;
-import java.util.Set;
-import java.util.regex.Pattern;
+import java.util.List;
 
 public abstract class GameScreen extends AbstractScreen {
     protected Timer.Task task;
@@ -33,12 +33,8 @@ public abstract class GameScreen extends AbstractScreen {
 	
     public GameScreen(Maze maze) {
         super();
-//        maze = new Maze(11, 13);
-//        maze.exportConfig(filename);
         this.maze = maze;
         this.maze_drawer = new MazeDrawer(maze,1/3f,1f,2/10f,1f, MazeDrawer.Fit.BEST);
-    
-
         
     }
 
@@ -129,8 +125,58 @@ public abstract class GameScreen extends AbstractScreen {
     }
 
 // 
+    public boolean turnIsOver() {
+    	return (current_player.getMovesRemaining() == 0 && current_player.getNumberBombRemaining() == 0);
+    }
+
+    
+    public boolean isPossibleAction(Action action) {
+    	List<Cell> adjacentCells = current_player.getCell().getAdjacentCells();
+    	// End turn
+    	if (action == Action.ENDTURN) {
+    		return true;
+    	}
+    	// Right
+		if (adjacentCells.get(0) != null && adjacentCells.get(0).isWalkable()) {
+			if (current_player.getNumberBombRemaining() > 0 && action == Action.DROP_BOMB_RIGHT) {
+				return true;
+			}
+			if (current_player.getMovesRemaining() > 0 && action == Action.MOVE_RIGHT) {
+				return true;
+			}
+		}
+		// Up
+		if (adjacentCells.get(1) != null && adjacentCells.get(1).isWalkable()) {
+			if (current_player.getNumberBombRemaining() > 0 && action == Action.DROP_BOMB_UP) {
+				return true;
+			}
+			if (current_player.getMovesRemaining() > 0 && action == Action.MOVE_UP) {
+				return true;
+			}
+		}
+		// Left
+		if (adjacentCells.get(2) != null && adjacentCells.get(2).isWalkable()) {
+			if (current_player.getNumberBombRemaining() > 0 && action == Action.DROP_BOMB_LEFT) {
+				return true;
+			}
+			if (current_player.getMovesRemaining() > 0 && action == Action.MOVE_LEFT) {
+				return true;
+			}
+		}
+		// Down
+		if (adjacentCells.get(3) != null && adjacentCells.get(3).isWalkable()) {
+			if (current_player.getNumberBombRemaining() > 0 && action == Action.DROP_BOMB_DOWN) {
+				return true;
+			}
+			if (current_player.getMovesRemaining() > 0 && action == Action.MOVE_DOWN) {
+				return true;
+			}
+		}
+		return false;
+    }
     
     public void applyAction(Action a) {
+    	
 		switch (a) {
 		case MOVE_UP:
 			moveCurrentPlayer(Directions.UP);
@@ -166,17 +212,17 @@ public abstract class GameScreen extends AbstractScreen {
 		default:
 			break;
 		}
+		// Force to end the turn if no more action are possible
+		if (a != Action.ENDTURN && turnIsOver()) {
+			endTurn();
+		}
 		
+		try {
+			Thread.sleep(200);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
     }   
-    
-    
-    
-    
-    
-    
-    
-    
-    
     
     
     
@@ -200,27 +246,17 @@ public abstract class GameScreen extends AbstractScreen {
 		clearCellsEffect();
 	    maze.processEndTurn();
 	    current_player.endTurn();
-        
-        task = new Timer.Task() {
-            @Override
-            public void run() {
-            	
-            	System.out.println(current_player);
-                nextPlayer();
-            }
-        };
-        Timer.schedule(task, 0.5f);
-    }
-    
-	private void forceThreadStop() {
-		Set<Thread> threadSet = Thread.getAllStackTraces().keySet();
-		Pattern p = Pattern.compile("^pool-[0-9]+-thread-[0-9]+$");
-		for (Thread t : threadSet) {
-			if (p.matcher(t.getName()).matches()) {
-				t.stop();
-			}
+	    
+		try {
+			Thread.sleep(500);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
 		}
-	}
+	    
+	    NumberTurn.getInstance().decreaseTurn(1);
+	    nextPlayer();
+
+    }
     
 
     protected abstract void nextPlayer();

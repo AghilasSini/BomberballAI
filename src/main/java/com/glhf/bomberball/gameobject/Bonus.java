@@ -19,6 +19,11 @@ public class Bonus extends GameObject {
         super(1);
         this.type = type;
     }
+    
+    @Override
+    public GameObject clone() {
+    	return new Bonus(type);
+    }
 
     @Override
     public void initialize() {
@@ -48,8 +53,8 @@ public class Bonus extends GameObject {
     }
 
     public void applyEffect(Player player) {
-        Audio.POWER_UP.play();
-        Score.getINSTANCE().increaseScore(10);
+//        Audio.POWER_UP.play();
+//        Score.getINSTANCE().increaseScore(10);
         switch (type) {
             case SPEED:
                 player.bonus_moves++;

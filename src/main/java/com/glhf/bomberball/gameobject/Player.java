@@ -20,7 +20,7 @@ public class Player extends Character {
     public transient int bonus_bomb_number = 0;
     public transient int bonus_bomb_range = 0;
     public transient int bonus_moves = 0;
-    protected int playerId;
+    protected int player_id;
     public Player(String player_skin,
                   int life,
                   int initial_moves,
@@ -128,17 +128,28 @@ public class Player extends Character {
 
     @Override
     public GameObject clone() {
-        GameObject p = new Player(skin, life, initial_moves, initial_bomb_number, initial_bomb_range);
+        Player clone = new Player(skin, life, initial_moves, initial_bomb_number, initial_bomb_range);
+        clone.sprite = this.sprite;
+        clone.cell = this.cell;
+        
+        clone.moves_remaining = this.moves_remaining;
+        
+        clone.active = this.active;
+        clone.bombs_remaining = this.bombs_remaining;
 
-        return p;
+        clone.bonus_bomb_number = this.bonus_bomb_number;
+        clone.bonus_bomb_range = this.bonus_bomb_range;
+        clone.bonus_moves = this.bonus_moves;
+        clone.player_id = this.player_id;
+
+        return clone;
     }
 
-	public int getCurrentPlayerId() {
-		// TODO Auto-generated method stub
-		return playerId;
+	public int getPlayerId() {
+		return player_id;
 	}
-	public void setCurrentPlayerId(int playerId) {
-		this.playerId=playerId;
+	public void setPlayerId(int playerId) {
+		this.player_id=playerId;
 		
 	}
 }

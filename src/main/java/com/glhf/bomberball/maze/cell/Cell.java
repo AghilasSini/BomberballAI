@@ -46,7 +46,13 @@ public class Cell {
     
     
     public Cell clone() {
-    	return new Cell(x,y);
+    	Cell clone = new Cell(x,y);
+    	for (GameObject o : this.objects) {
+    		GameObject cloneO = o.clone();
+    		clone.addGameObject(cloneO);
+    	}
+    	// Warning: adjacent cells cannot be set here
+    	return clone;
     }
     
     
@@ -106,7 +112,7 @@ public class Cell {
      * @return List of all adjacent cells
      * Discards null adjacent cells
      */
-    public ArrayList<Cell> getAdjacentCells()
+    public ArrayList<Cell> getAdjacentCellsInMaze()
     {
         ArrayList<Cell> cells = new ArrayList<>();
         for (Directions dir : Directions.values()) {
@@ -114,6 +120,20 @@ public class Cell {
             if (c != null) {
                 cells.add(c);
             }
+        }
+        return cells;
+    }
+    
+    /**
+     * @return List of all adjacent cells
+     * Discards null adjacent cells
+     */
+    public ArrayList<Cell> getAdjacentCells()
+    {
+        ArrayList<Cell> cells = new ArrayList<>();
+        for (Directions dir : Directions.values()) {
+            Cell c = getAdjacentCell(dir);
+            cells.add(c);
         }
         return cells;
     }

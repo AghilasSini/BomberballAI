@@ -76,7 +76,7 @@ public abstract class GameObject {
      */
     public void getDamage(int damage){
         life -= damage;
-        Score.getINSTANCE().increaseScore(scoreWhileDestroyed());
+//        Score.getINSTANCE().increaseScore(scoreWhileDestroyed());
         if (life <= 0) {
             this.dispose();
         }

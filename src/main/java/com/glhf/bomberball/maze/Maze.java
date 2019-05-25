@@ -14,16 +14,17 @@ import com.google.gson.*;
 
 import java.io.*;
 import java.util.ArrayList;
+import java.util.List;
 
 public class Maze implements Cloneable{
 
 	 String title;
-    ArrayList<VectorInt2> spawn_positions = new ArrayList<>();
+    List<VectorInt2> spawn_positions = new ArrayList<>();
    
 	int height;
     int width;
     Cell[][] cells;
-    ArrayList<Player> players;
+    List<Player> players;
     static Gson gson;
 
     public Maze() {
@@ -50,22 +51,34 @@ public class Maze implements Cloneable{
 	}
 
 	
-	@SuppressWarnings("unchecked")
 	public Object clone() {
-		 Maze mazeClone=null;
-		 try {	
-			 mazeClone=(Maze) super.clone();
-		 }catch (CloneNotSupportedException e) {
-		          System.out.println("CloneNotSupportedException comes out : "+e.getMessage());
-		 }
-		 mazeClone.cells=( Cell[][]) cells.clone();
-		 mazeClone.players=(ArrayList<Player>)players.clone();
-		 mazeClone.spawn_positions=(ArrayList<VectorInt2>) spawn_positions.clone();
-		 return mazeClone;
-		 
+		Maze mazeClone = new Maze(this.width, this.height);
+        for (int x = 0; x < width; x++) {
+            for (int y = 0; y < height; y++) {
+                mazeClone.cells[x][y] = this.cells[x][y].clone();
+            }
+        }
+		
+		mazeClone.spawn_positions= new ArrayList<VectorInt2>(spawn_positions.size());
+		for (int i = 0; i < players.size(); i++) {
+			mazeClone.spawn_positions.add(((VectorInt2) spawn_positions.get(i)));
+		}
+        
+		mazeClone.players = new ArrayList<Player>(players.size());
+		for (int i = 0; i < players.size(); i++) {
+			Player playerClone = ((Player) players.get(i).clone());
+			Cell playerCell = playerClone.getCell();
+			playerClone.setCell(mazeClone.getCellAt(playerCell.getX(), playerCell.getY()));
+			mazeClone.players.add(playerClone);
+		}
+
+		// Browse all cell clones and set players as well as cell adjacency
+		mazeClone.initialize();
+		
+		return mazeClone;
 	 
 	}
-	 public ArrayList<VectorInt2> getSpawn_positions() {
+	 public List<VectorInt2> getSpawn_positions() {
 			return spawn_positions;
 		}
 
@@ -85,6 +98,10 @@ public class Maze implements Cloneable{
             }
         }
     }
+    
+    public void setPlayers(List<Player> players) {
+    	this.players = players;
+    }
 
     public Player spawnPlayer(GameSoloConfig config)
     {
@@ -92,7 +109,7 @@ public class Maze implements Cloneable{
         return spawnPlayer(config, config.player_skin, cells[pos.x][pos.y]);
     }
 
-    public ArrayList<Player> spawnPlayers(int nb_player)
+    public List<Player> spawnPlayers(int nb_player)
     {
         GameMultiConfig config = GameMultiConfig.get();
         players = new ArrayList<>();
@@ -103,6 +120,18 @@ public class Maze implements Cloneable{
         }
         return players;
     }
+    
+//    public void spawnPlayers(List<Player> players)
+//    {
+//        this.players = players;
+//        int n = players.size();
+//        for (int i = 0; i < n; i++) {
+//            VectorInt2 pos = spawn_positions.get(i);
+//            Player player = spawnPlayer(config, config.player_skins[i], cells[pos.x][pos.y]);
+//            players.add(player);
+//        }
+//        return players;
+//    }
 
     private Player spawnPlayer(GameConfig config, String player_skin, Cell cell) {
         Player player = new Player(
@@ -115,7 +144,7 @@ public class Maze implements Cloneable{
         return player;
     }
 
-    public ArrayList<VectorInt2> getPlayersSpawns() {
+    public List<VectorInt2> getPlayersSpawns() {
         return spawn_positions;
     }
 
@@ -135,13 +164,7 @@ public class Maze implements Cloneable{
         return width;
     }
 
-    public ArrayList<Player> getPlayers() {
-        players = new ArrayList<>();
-        for (int x = 0; x < width; x++) {
-            for (int y = 0; y < height; y++) {
-                players.addAll(cells[x][y].getInstancesOf(Player.class));
-            }
-        }
+    public List<Player> getPlayers() {
         return players;
     }
 
@@ -270,4 +293,5 @@ public class Maze implements Cloneable{
 	public String toString() {
         return gson.toJson(this);
     }
+    
 }

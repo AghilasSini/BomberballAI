@@ -1,7 +1,5 @@
 package com.glhf.bomberball.screens;
 
-import java.util.ArrayList;
-
 import com.glhf.bomberball.audio.Audio;
 import com.glhf.bomberball.gameobject.Player;
 import com.glhf.bomberball.ui.VictoryMenuUI;
