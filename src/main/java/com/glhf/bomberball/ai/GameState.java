@@ -14,13 +14,13 @@ public class GameState {
 	private Maze maze;
 	private List<Player> players;
 	private int current_player_id;
-	private int turn_number;
+	private int remaining_turns;
 
 	public GameState(Maze maze, int currentPlayerId, int turnNumber) {
 		this.maze = maze;
 		this.players = maze.getPlayers();
 		this.current_player_id = currentPlayerId;
-		this.turn_number = turnNumber;
+		this.remaining_turns = turnNumber;
 	}
 
 	public List<Player> getPlayers() {
@@ -38,13 +38,13 @@ public class GameState {
 	public GameState clone() {
 		GameState gameStateClone = new GameState((Maze) this.maze.clone(),
 												this.current_player_id,
-												this.turn_number);
+												this.remaining_turns);
 		return gameStateClone;
 	}
 
 	public boolean gameIsOver() {
 		int nAlive = 0;
-		if (getTurnNumber() == GameMultiScreen.TURN_LIMIT) { return true; }
+		if (getRemainingTurns() == 0) { return true; }
 		for (Player p : players) {
 			if (p.isAlive()) {
 				nAlive++;
@@ -146,7 +146,7 @@ public class GameState {
 	    maze.processEndTurn();
 	    getCurrentPlayer().endTurn();
 	    
-	    turn_number++;
+	    remaining_turns--;
 	    if (!gameIsOver()) {
 	    	nextPlayer();
 	    }
@@ -207,8 +207,8 @@ public class GameState {
 		return maze;
 	}
 	
-	public int getTurnNumber() {
-		return turn_number;
+	public int getRemainingTurns() {
+		return remaining_turns;
 	}
 
 }
