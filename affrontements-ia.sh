@@ -1,8 +1,6 @@
 #!/bin/bash
     
-# IA aleatoire
-for t in a b c d e f g h i j k ; do bash lancer-match-aller-retour.sh $t 1 ; done
+# VanillaAI
+for t in `seq 3 16` ; do bash lancer-match-aller-retour.sh $t 2 ; done
 
 
-# IA aleatoire connexions
-for t in a b c d e f g h i j k ; do bash lancer-match-aller-retour.sh $t 2 ; done
