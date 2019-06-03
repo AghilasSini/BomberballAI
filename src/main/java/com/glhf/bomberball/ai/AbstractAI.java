@@ -7,7 +7,7 @@ import com.glhf.bomberball.utils.Action;
 
 public abstract class AbstractAI extends Player {
 
-	public static int TIME_TO_THINK = 2000;
+	public static int TIME_TO_THINK = 700;
 	protected Action memorizedAction;
 
 	public AbstractAI(GameConfig config, String player_skin, String name, int playerId) {

@@ -1,5 +1,7 @@
 #!/bin/bash
 
+workdir=`pwd`
+
 read -r -d '' CLASSES <<EOLIST
 1	RandomAI
 2	VanillaAI
@@ -27,4 +29,4 @@ j2=`echo "$CLASSES" | grep -P "^$2" | cut -f2`
 echo "Joueur 1 : $j1"
 echo "Joueur 2 : $j2"
 
-java -cp "lib/aparapi.jar:lib/json-simple-1.1.1.jar:bin" Twixt $j1 $j2
+java -jar  ${workdir}/build/libs/ia_bomberball-all-1.0.jar $j1 $j2

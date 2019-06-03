@@ -17,7 +17,7 @@ import org.lwjgl.Sys;
 /**
  * Cette classe represente l'IA fonctionnant avec un approfondissement iteratif
  */
-public class FirstAI extends AbstractAI {
+public class Kilo extends AbstractAI {
 
     /**
      * Constructeur
@@ -25,8 +25,8 @@ public class FirstAI extends AbstractAI {
      * @param player_skin le visuel du personnage
      * @param playerId l'id de l'ia dans le jeu
      */
-    public FirstAI(GameConfig config, String player_skin, int playerId) {
-        super(config,"wizzard_m","FirstAI",playerId);
+    public Kilo(GameConfig config, String player_skin, int playerId) {
+        super(config,"wizzard_m","Kilo",playerId);
         // TODO Auto-generated constructor stub
     }
 

@@ -22,15 +22,15 @@ import com.glhf.bomberball.utils.Directions;
 import com.glhf.bomberball.utils.Node;
 import org.lwjgl.Sys;
 
-public class NotreIA extends AbstractAI {
+public class Bravo extends AbstractAI {
     public double alpha;
     public double beta;
     public int n;
     public int actual_move;
     public ArrayList<Directions> way;
     //public List<Cell> visite = new ArrayList<>();
-    public NotreIA(GameConfig config,String player_skin,int playerId) {
-        super(config,player_skin,"NotreIA",playerId);
+    public Bravo(GameConfig config,String player_skin,int playerId) {
+        super(config,player_skin,"Bravo",playerId);
         alpha=Double.NEGATIVE_INFINITY;
         beta=Double.POSITIVE_INFINITY;
         n=-1;

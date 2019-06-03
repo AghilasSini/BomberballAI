@@ -11,7 +11,7 @@ import com.glhf.bomberball.ai.AbstractAI;
 import com.glhf.bomberball.ai.GameState;
 import com.glhf.bomberball.config.GameConfig;
 
-public class AlphaBetaEcho extends AbstractAI
+public class Echo extends AbstractAI
 {
 
     private int bombBonus;
@@ -23,9 +23,9 @@ public class AlphaBetaEcho extends AbstractAI
     private int prof_max;
     private Action meilleureaction;
 
-    public AlphaBetaEcho(GameConfig config,String player_skin,int playerId)
+    public Echo(GameConfig config,String player_skin,int playerId)
     {
-        super(config,"black_knight","alpha_betaAI",playerId);
+        super(config,"black_knight","Echo",playerId);
         // TODO Auto-generated constructor stub
     }
 

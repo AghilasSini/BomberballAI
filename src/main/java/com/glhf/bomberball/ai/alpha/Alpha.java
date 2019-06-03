@@ -20,7 +20,7 @@ import java.util.Random;
 /**
  * Implémentation d'un joueur artificiel qui joue de manière aléatoire
  */
-public class AlphaBeta extends AbstractAI{
+public class Alpha extends AbstractAI{
 
 
     int alpha=-1000;
@@ -32,8 +32,8 @@ public class AlphaBeta extends AbstractAI{
     int minUtility=-10000;
 
 
-    public AlphaBeta(GameConfig config,String player_skin,int playerId) {
-        super(config,"wizzard_m","AlphaBeta",playerId);
+    public Alpha(GameConfig config,String player_skin,int playerId) {
+        super(config,"wizzard_m","Alpha",playerId);
     }
 
 

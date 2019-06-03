@@ -2,22 +2,23 @@ package com.glhf.bomberball.ai;
 
 import java.util.Vector;
 
-import com.glhf.bomberball.ai.alpha.AlphaBeta;
-import com.glhf.bomberball.ai.bravo.NotreIA;
-import com.glhf.bomberball.ai.charlie.AlphaBetaCharlie;
-import com.glhf.bomberball.ai.delta.DeltaAI;
-import com.glhf.bomberball.ai.echo.AlphaBetaEcho;
-import com.glhf.bomberball.ai.foxtrot.IAAlphaBetaV1;
-import com.glhf.bomberball.ai.golf.GolfAI;
-import com.glhf.bomberball.ai.hotel.AlphaBetaID;
-import com.glhf.bomberball.ai.india.AdvanceAI;
-import com.glhf.bomberball.ai.juliett.AlphaBetaJuliett;
-import com.glhf.bomberball.ai.kilo.FirstAI;
-import com.glhf.bomberball.ai.lima.LimaAI;
-import com.glhf.bomberball.ai.mike.BombyMike_AlphaBeta;
-import com.glhf.bomberball.ai.novembre.AlphaBetaNovembre;
-import com.glhf.bomberball.ai.oscar.OscarAI;
-import com.glhf.bomberball.ai.papa.PapaIA;
+import com.glhf.bomberball.ai.alpha.Alpha;
+import com.glhf.bomberball.ai.bravo.Bravo;
+import com.glhf.bomberball.ai.charlie.Charlie;
+
+import com.glhf.bomberball.ai.delta.Delta;
+import com.glhf.bomberball.ai.echo.Echo;
+import com.glhf.bomberball.ai.foxtrot.Foxtrot;
+import com.glhf.bomberball.ai.golf.Golf;
+import com.glhf.bomberball.ai.hotel.Hotel;
+import com.glhf.bomberball.ai.india.India;
+import com.glhf.bomberball.ai.juliett.Juliett;
+import com.glhf.bomberball.ai.kilo.Kilo;
+import com.glhf.bomberball.ai.lima.Lima;
+import com.glhf.bomberball.ai.mike.Mike;
+import com.glhf.bomberball.ai.novembre.November;
+import com.glhf.bomberball.ai.oscar.Oscar;
+import com.glhf.bomberball.ai.papa.Papa;
 import com.glhf.bomberball.config.GameConfig;
 import com.glhf.bomberball.config.GameMultiConfig;
 import com.glhf.bomberball.gameobject.Player;
@@ -59,91 +60,91 @@ public class FactoryMethod {
 	    		
 	    	// Groupe Alpha
 	    	case "Alpha":
-	    		  player=new AlphaBeta(configMultiPlayers,player_skin,playerId);
+	    		  player=new Alpha(configMultiPlayers,player_skin,playerId);
 		    		cell.addGameObject(player);
 		    		return player;	
 		
 			// Groupe Bravo
 			case "Bravo":
-				  player=new NotreIA(configMultiPlayers,player_skin,playerId);
+				  player=new Bravo(configMultiPlayers,player_skin,playerId);
 		    		cell.addGameObject(player);
 		    		return player;	
 			// Groupe Charlie
 			case "Charlie":
-	    	     player=new AlphaBetaCharlie(configMultiPlayers,player_skin,playerId);
+	    	     player=new Charlie(configMultiPlayers,player_skin,playerId);
 	    		cell.addGameObject(player);
 	    		return player;	
 	    	// Groupe Delta
 			case "Delta":
-			     player=new DeltaAI(configMultiPlayers,player_skin,playerId);
+			     player=new Delta(configMultiPlayers,player_skin,playerId);
 		    	 cell.addGameObject(player);
 		    	 return player;
 			// Groupe Echo
 			case "Echo":
-                player=new AlphaBetaEcho(configMultiPlayers,player_skin,playerId);
+                player=new Echo(configMultiPlayers,player_skin,playerId);
                 cell.addGameObject(player);
 				return player;
 			// Groupe Foxtrot
 			case "Foxtrot":
-				player=new IAAlphaBetaV1(configMultiPlayers, player_skin, playerId);
+				player=new Foxtrot(configMultiPlayers, player_skin, playerId);
 				cell.addGameObject(player);
 				return player;
 				
 			// Groupe Golf
 			case "Golf":
-				player=new GolfAI(configMultiPlayers, player_skin, playerId);
+				player=new Golf(configMultiPlayers, player_skin, playerId);
 				cell.addGameObject(player);
 				return player;
 				
 			// Groupe Hotel
 			case "Hotel":
-				player=new AlphaBetaID(configMultiPlayers,player_skin,playerId);
+				player=new Hotel(configMultiPlayers,player_skin,playerId);
 				cell.addGameObject(player);
 				return player;
 				
 			// Groupe India
 			case "India":
-				player=new AdvanceAI(configMultiPlayers,player_skin,playerId);
+				player=new India(configMultiPlayers,player_skin,playerId);
 				cell.addGameObject(player);
 				return player;
 				
 			// Groupe Juliett
 			case "Juliett":
-				player=new AlphaBetaJuliett(configMultiPlayers,player_skin,playerId);
+				player=new Juliett(configMultiPlayers,player_skin,playerId);
 				cell.addGameObject(player);
 				return player;
 
 			//Groupe  Kilo
 			case "Kilo":
-				player=new FirstAI(configMultiPlayers,player_skin,playerId);
+				player=new Kilo(configMultiPlayers,player_skin,playerId);
 				cell.addGameObject(player);
 				return player;
 
 			//Groupe  Lima
 			case "Lima":
-				player=new LimaAI(configMultiPlayers,player_skin,playerId);
+				player=new Lima(configMultiPlayers,player_skin,playerId);
 				cell.addGameObject(player);
 				return player;
 			
 			//Groupe  Mike
 			case "Mike":
-				player=new BombyMike_AlphaBeta(configMultiPlayers,player_skin,playerId);
+				player=new Mike(configMultiPlayers,player_skin,playerId);
 				cell.addGameObject(player);
 				return player;
 			//  Groupe Novembre
-			case "Novembre":
-				player=new AlphaBetaNovembre(configMultiPlayers,player_skin,playerId);
+			case "November":
+				player=new November(configMultiPlayers,player_skin,playerId);
 				cell.addGameObject(player);
 				return player;
 				
 			//Groupe Oscar
 			case "Oscar":
-				player=new OscarAI(configMultiPlayers,player_skin,playerId);
+				player=new Oscar(configMultiPlayers,player_skin,playerId);
 				cell.addGameObject(player);
 				return player;
 			// Groupe Papa
 			case "Papa":
-				player=new PapaIA(configMultiPlayers,player_skin,playerId);
+				player=new Papa(configMultiPlayers,player_skin,playerId);
 				cell.addGameObject(player);
 				return player;
 			case "ChiliAI":

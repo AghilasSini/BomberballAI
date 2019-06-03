@@ -14,7 +14,7 @@ import com.glhf.bomberball.config.GameConfig;
 /**
  * Implémentation d'un joueur artificiel Avancé
  */
-public class AdvanceAI extends AbstractAI {
+public class India extends AbstractAI {
 
     public static int PROFONDEUR_MAX = 50;
 
@@ -26,8 +26,8 @@ public class AdvanceAI extends AbstractAI {
      *
      ** //@param nom nom du joueur
      */
-    public AdvanceAI(GameConfig config, String player_skin, int playerId) {
-        super(config,"knight_m","AdvanceAI",playerId);
+    public India(GameConfig config, String player_skin, int playerId) {
+        super(config,"knight_m","India",playerId);
     }
 
     /**

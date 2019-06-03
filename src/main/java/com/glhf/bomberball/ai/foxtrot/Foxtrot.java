@@ -13,7 +13,7 @@ import com.glhf.bomberball.utils.Action;
 import java.util.*;
 
 
-public class IAAlphaBetaV1 extends AbstractAI {
+public class Foxtrot extends AbstractAI {
 
     private boolean firstRound = true;
     private int maxProfAbs = 100;
@@ -23,8 +23,8 @@ public class IAAlphaBetaV1 extends AbstractAI {
     private boolean endDijkstra = false;
 
 
-    public IAAlphaBetaV1(GameConfig config, String player_skin, int playerId) {
-        super(config, player_skin, "AlphaBetaV1", playerId);
+    public Foxtrot(GameConfig config, String player_skin, int playerId) {
+        super(config, player_skin, "Foxtrot", playerId);
     }
 
     @Override

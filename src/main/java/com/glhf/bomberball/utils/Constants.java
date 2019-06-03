@@ -11,9 +11,9 @@ public class Constants {
 
     // constants for paths
     // added by asini
-    //public static final String PATH_ASSET	  = "./src/resources/assets/";
+    public static final String PATH_ASSET	  = "./src/resources/assets/";
     // for generating the jar file
-    public static final String PATH_ASSET         = "assets/";
+    //public static final String PATH_ASSET         = "assets/";
     public static final String PATH_MAZE          = PATH_ASSET+"mazes/";
     public static final String PATH_GRAPHICS      = PATH_ASSET+"graphics/";
     public static final String PATH_CONFIGS       = PATH_ASSET+"configs/";

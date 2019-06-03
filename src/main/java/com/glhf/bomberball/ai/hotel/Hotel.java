@@ -8,10 +8,10 @@ import com.glhf.bomberball.utils.Action;
 
 import java.util.List;
 
-public class AlphaBetaID extends AbstractAI {
+public class Hotel extends AbstractAI {
 
-    public AlphaBetaID(GameConfig config, String player_skin, int playerId) {
-        super(config,player_skin,"AlphaBetaID",playerId);
+    public Hotel(GameConfig config, String player_skin, int playerId) {
+        super(config,player_skin,"Hotel",playerId);
         // TODO Auto-generated constructor stub
     }
 

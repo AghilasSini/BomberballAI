@@ -15,7 +15,7 @@ import com.glhf.bomberball.utils.Directions;
 import java.util.ArrayList;
 import java.util.List;
 
-public class AlphaBetaNovembre extends AbstractAI {
+public class November extends AbstractAI {
 
     private int Alpha;
     private int Beta;
@@ -55,9 +55,9 @@ public class AlphaBetaNovembre extends AbstractAI {
 
     private double finalscore=-1;
 
-    public AlphaBetaNovembre(GameConfig config, String player_skin, int playerId) {
+    public November(GameConfig config, String player_skin, int playerId) {
 
-        super(config,player_skin,"AlphaBetaAI",playerId);
+        super(config,player_skin,"November",playerId);
         this.Alpha = -2147483646;
         this.Beta = 2147483646;
         this.actionsAEffectuer = new MyArrayList<>();

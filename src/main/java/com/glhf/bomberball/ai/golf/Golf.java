@@ -16,7 +16,7 @@ import java.util.List;
 import static com.glhf.bomberball.maze.MazeTransversal.getReacheableCellsInRange;
 import static com.glhf.bomberball.utils.Directions.*;
 
-public class GolfAI extends AbstractAI{
+public class Golf extends AbstractAI{
 
 
     private LinkedList<Node> OPEN;
@@ -38,8 +38,8 @@ public class GolfAI extends AbstractAI{
     private final double WALL = -2;
     private int oldNbBonus;
 
-    public GolfAI(GameConfig config, String player_skin, int playerId) {
-        super(config,"necromancer","FirstAi",playerId);
+    public Golf(GameConfig config, String player_skin, int playerId) {
+        super(config,"necromancer","Golf",playerId);
     }
 
     @Override

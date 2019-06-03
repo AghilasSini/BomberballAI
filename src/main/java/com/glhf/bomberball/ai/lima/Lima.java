@@ -11,14 +11,14 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
-public class LimaAI extends AbstractAI{
+public class Lima extends AbstractAI{
 
     private Noeud noeud;
     private Player ia;
     private boolean calculDone;
 
-    public LimaAI(GameConfig config, String player_skin, int playerId) {
-        super(config,"skelet","LimaAI",playerId);
+    public Lima(GameConfig config, String player_skin, int playerId) {
+        super(config,"skelet","Lima",playerId);
         ia=this;
     }
 

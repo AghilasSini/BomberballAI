@@ -1,4 +1,5 @@
-﻿package com.glhf.bomberball.ai.delta;
+package com.glhf.bomberball.ai.delta;
+
 import com.glhf.bomberball.ai.AbstractAI;
 import com.glhf.bomberball.ai.GameState;
 import com.glhf.bomberball.config.GameConfig;
@@ -14,7 +15,7 @@ import java.util.List;
 
 import static com.glhf.bomberball.utils.Action.*;
 
-public class DeltaAI extends AbstractAI {
+public class Delta extends AbstractAI {
 
     static Action[] dirToBombDrop = {DROP_BOMB_RIGHT, DROP_BOMB_UP, DROP_BOMB_LEFT, DROP_BOMB_DOWN};
 
@@ -29,8 +30,8 @@ public class DeltaAI extends AbstractAI {
     int solution_depth;
     boolean best_possible_turn;
 
-    public DeltaAI(GameConfig config, String player_skin, int playerId) {
-        super(config, "orc_warrior", "DeltaAI", playerId);
+    public Delta(GameConfig config, String player_skin, int playerId) {
+        super(config, "orc_warrior", "Delta", playerId);
         this.config = config;
         setMemorizedAction(ENDTURN);
         rng = new Random();

@@ -11,7 +11,7 @@ import com.glhf.bomberball.utils.Action;
 import java.util.List;
 
 // gradle build && java -jar build\libs\ia_bomberball-all-1.0.jar
-public class OscarAI extends AbstractAI {
+public class Oscar extends AbstractAI {
 
     private final int MAX = 10000;
     private final int MIN = -10000;
@@ -19,8 +19,8 @@ public class OscarAI extends AbstractAI {
     private int EnemyIndex;
     private boolean indexNotSet;
 
-    public OscarAI(GameConfig config, String player_skin, int playerId) {
-        super(config, player_skin, "OscarAI", playerId);
+    public Oscar(GameConfig config, String player_skin, int playerId) {
+        super(config, player_skin, "Oscar", playerId);
         indexNotSet = true;
         System.out.println("Creating OscarAI " + playerId);
     }

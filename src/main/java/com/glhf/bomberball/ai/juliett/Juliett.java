@@ -18,7 +18,7 @@ import java.util.List;
 /* Implémentation de l'algorithme alpha-béta en version itérative et heuristique améliorée*/
 /* Ajout de coefficients pour un contrôle plus simple de l'heuristique*/
 
-public class AlphaBetaJuliett extends AbstractAI {
+public class Juliett extends AbstractAI {
 
     private final int maxUtility = 100000;
     private final int minUtility = -100000;
@@ -33,8 +33,8 @@ public class AlphaBetaJuliett extends AbstractAI {
     private int nbCasesDestructiblesDebut;
     private double distanceDebut;
 
-    public AlphaBetaJuliett(GameConfig config, String player_skin, int playerId) {
-        super(config, player_skin, "CustomAI5", playerId);
+    public Juliett(GameConfig config, String player_skin, int playerId) {
+        super(config, player_skin, "Juliett", playerId);
     }
 
     public Action choosedAction(GameState gameState) {

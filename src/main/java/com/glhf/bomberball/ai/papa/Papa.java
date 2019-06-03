@@ -12,7 +12,7 @@ import com.glhf.bomberball.utils.Action;
 
 
 
-public class PapaIA extends AbstractAI {
+public class Papa extends AbstractAI {
 
 
 
@@ -23,8 +23,8 @@ public class PapaIA extends AbstractAI {
     Action bestAction;
 
 
-    public PapaIA(GameConfig config, String player_skin,int playerId) {
-        super(config, player_skin, "PapaIA", playerId);
+    public Papa(GameConfig config, String player_skin,int playerId) {
+        super(config, player_skin, "Papa", playerId);
     }
 
     @Override

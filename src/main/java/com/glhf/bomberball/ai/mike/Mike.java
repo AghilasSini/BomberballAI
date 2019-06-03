@@ -15,14 +15,14 @@ import com.glhf.bomberball.config.GameConfig;
 import static com.glhf.bomberball.utils.Action.*;
 import static java.lang.Math.abs;
 
-public class BombyMike_AlphaBeta extends AbstractAI {
+public class Mike extends AbstractAI {
 
     int alpha = -1000;
     int beta = 1000;
     private int distance;
 
-    public BombyMike_AlphaBeta(GameConfig config, String player_skin, int playerId) {
-        super(config, "wizzard_m", "JoueurAlphaBeta", playerId);
+    public Mike(GameConfig config, String player_skin, int playerId) {
+        super(config, "wizzard_m", "Mike", playerId);
         this.distance = 0;
     }
 

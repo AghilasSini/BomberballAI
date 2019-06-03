@@ -22,7 +22,7 @@ import static java.lang.Math.*;
 /**
  * Implémentation d'un joueur artificiel qui joue de manière aléatoire
  */
-public class AlphaBetaCharlie extends AbstractAI{
+public class Charlie extends AbstractAI{
 
     private GameState actuel;  //stockage de l'etat actuel
     private Action coup;       //stockage du meilleur coup
@@ -35,8 +35,8 @@ public class AlphaBetaCharlie extends AbstractAI{
     private int AB = 0;         // stock le score de la derniere valeur renvoyée par l'alphabeta à la profondeur précédente
     private int bonusWall = 10000;
 
-    public AlphaBetaCharlie(GameMultiConfig config, String player_skin, int playerId) {
-        super(config,player_skin,"AlphaBeta",playerId);
+    public Charlie(GameMultiConfig config, String player_skin, int playerId) {
+        super(config,player_skin,"Charlie",playerId);
     }
 
     /**

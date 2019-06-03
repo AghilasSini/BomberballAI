@@ -28,7 +28,7 @@ public class GameMultiScreen extends GameScreen {
 	private Player winner;
 	protected int current_player_id;
 	protected BlockingQueue<Object> enAttente;
-	public static final int TURN_LIMIT = 40;
+	public static final int TURN_LIMIT = 25;
 
 	public GameMultiScreen(Maze maze, int maze_id) {
 		super(maze);
@@ -215,7 +215,7 @@ public class GameMultiScreen extends GameScreen {
 		int initial_player_id = current_player_id;
 
 		try {
-			Thread.sleep(500);
+			Thread.sleep(300);
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
