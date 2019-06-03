@@ -1,6 +1,5 @@
 package com.glhf.bomberball;
 
-import java.util.ArrayList;
 
 import com.badlogic.gdx.backends.lwjgl.LwjglApplication;
 import com.badlogic.gdx.backends.lwjgl.LwjglApplicationConfiguration;
@@ -26,10 +25,10 @@ public class Main{
 		Bomberball bomberball=null;
 					
 		// Console mode
-		if (args.length ==0) {
+		if (args.length !=0) {
 			// IA mode 
 			System.out.println("AI Mode");
-			bomberball=new Bomberball("RandomAI","VanillaAI");		
+			bomberball=new Bomberball(args[0],args[1]);		
 			
 		}else {
 				
