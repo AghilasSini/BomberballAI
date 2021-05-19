@@ -33,7 +33,7 @@ public class Main{
 		}else {
 				
 			
-			bomberball=new Bomberball("Charlie","Charlie");
+			bomberball=new Bomberball();
 			
 		}
 		new LwjglApplication(bomberball,config);
